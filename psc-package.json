@@ -1,0 +1,12 @@
+{
+    "name": "change-field-name-simple-json-example",
+    "set": "karaage",
+    "source": "https://github.com/justinwoo/package-sets.git",
+    "depends": [
+        "simple-json",
+        "psci-support",
+        "console",
+        "eff",
+        "prelude"
+    ]
+}
