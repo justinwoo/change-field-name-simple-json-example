@@ -29,13 +29,13 @@ rename prev next record =
     inter :: Record inter
     inter = delete prev record
 
-type MyShit =
+type MyThing =
   { "fieldA" :: String
   , "fieldB" :: Int
   }
 
-decodeMyShitFromShittyJSON :: String -> Either (NonEmptyList ForeignError) MyShit
-decodeMyShitFromShittyJSON s = do
+decodeMyThingFromDirtyJSON :: String -> Either (NonEmptyList ForeignError) MyThing
+decodeMyThingFromDirtyJSON s = do
   parsed <- readJSON s
   pure $ rename
     (SProxy :: SProxy "MY_FIELD_A")
@@ -52,7 +52,7 @@ testJSON = """
 
 main :: forall e. Eff (console :: CONSOLE | e) Unit
 main = do
-  case decodeMyShitFromShittyJSON testJSON of
+  case decodeMyThingFromDirtyJSON testJSON of
     Right {fieldA} -> log $ "fieldA: " <> fieldA
     Left e -> log $ "error: " <> show e
   -- output:
